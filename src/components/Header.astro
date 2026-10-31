@@ -31,17 +31,28 @@ const nav = [
 <script>
   const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
   const nav = document.querySelector<HTMLElement>('.site-nav');
-  const closeMenu = () => {
+  const toggleLabel = toggle?.querySelector<HTMLElement>('.sr-only');
+  const closeMenu = (restoreFocus = false) => {
     toggle?.setAttribute('aria-expanded', 'false');
     nav?.classList.remove('is-open');
     document.body.classList.remove('menu-open');
+    if (toggleLabel) toggleLabel.textContent = 'Open navigation';
+    if (restoreFocus) toggle?.focus();
   };
   toggle?.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') !== 'true';
+    if (!open) {
+      closeMenu();
+      return;
+    }
     toggle.setAttribute('aria-expanded', String(open));
-    nav?.classList.toggle('is-open', open);
-    document.body.classList.toggle('menu-open', open);
+    nav?.classList.add('is-open');
+    document.body.classList.add('menu-open');
+    if (toggleLabel) toggleLabel.textContent = 'Close navigation';
+    nav?.querySelector<HTMLAnchorElement>('a')?.focus({ preventScroll: true });
   });
-  nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
-  addEventListener('keydown', (event) => event.key === 'Escape' && closeMenu());
+  nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMenu()));
+  addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') closeMenu(true);
+  });
 </script>
