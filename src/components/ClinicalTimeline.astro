@@ -1,0 +1,113 @@
+---
+interface Experience {
+  id: string;
+  position: string;
+  organization: string;
+  affiliation: string;
+  experienceType: string;
+  startDate: string | null;
+  endDate: string | null;
+  location: string;
+  highlights: string[];
+  areas: string[];
+}
+
+interface Props { experiences: Experience[] }
+const { experiences } = Astro.props;
+
+const clean = (text: string) => text.replace('â€“', '—');
+const monthYear = (date: string) => new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}-01T00:00:00Z`));
+const range = (item: Experience) => item.startDate && item.endDate
+  ? `${monthYear(item.startDate)} — ${monthYear(item.endDate)}`
+  : 'Dates not listed';
+---
+
+<div class="clinical-timeline" data-timeline data-reveal>
+  <div class="timeline-rail" role="tablist" aria-label="Clinical experience">
+    {experiences.map((item, index) => (
+      <button
+        id={`timeline-tab-${item.id}`}
+        class:list={['timeline-tab', { 'is-active': index === 0 }]}
+        type="button"
+        role="tab"
+        aria-selected={index === 0 ? 'true' : 'false'}
+        aria-controls={`timeline-panel-${item.id}`}
+        tabindex={index === 0 ? 0 : -1}
+        data-timeline-tab={item.id}
+      >
+        <span class="timeline-tab__index">0{index + 1}</span>
+        <span class="timeline-tab__text">
+          <strong>{item.areas.length > 2 ? 'Medicine · Chest · RICU' : item.areas.slice(0, 2).join(' · ')}</strong>
+          <small>{range(item)}</small>
+        </span>
+        <span class="timeline-tab__arrow" aria-hidden="true">↗</span>
+      </button>
+    ))}
+  </div>
+
+  <div class="timeline-stage" aria-live="polite">
+    <div class="timeline-stage__pulse" aria-hidden="true">
+      <svg viewBox="0 0 680 140" preserveAspectRatio="none">
+        <path class="pulse-base" d="M0 75h155l18-38 25 86 28-98 27 66 15-16h412" />
+        <path class="pulse-active" d="M0 75h155l18-38 25 86 28-98 27 66 15-16h412" />
+      </svg>
+    </div>
+    {experiences.map((item, index) => (
+      <article
+        id={`timeline-panel-${item.id}`}
+        class="timeline-panel"
+        role="tabpanel"
+        aria-labelledby={`timeline-tab-${item.id}`}
+        hidden={index !== 0}
+        data-timeline-panel={item.id}
+      >
+        <div class="timeline-panel__meta">
+          <span>{item.experienceType}</span>
+          <span>{item.location}</span>
+        </div>
+        <h3>{clean(item.position)}</h3>
+        <p class="timeline-panel__place">{item.organization} <span>·</span> {item.affiliation}</p>
+        <ul class="timeline-panel__highlights">
+          {item.highlights.map((highlight) => <li>{highlight}</li>)}
+        </ul>
+        <div class="tag-list" aria-label="Areas of exposure">
+          {item.areas.map((area) => <span>{area}</span>)}
+        </div>
+        {item.id === 'ent' && <p class="timeline-panel__note">Volunteering dates were not supplied.</p>}
+      </article>
+    ))}
+  </div>
+</div>
+
+<script>
+  const timelines = document.querySelectorAll<HTMLElement>('[data-timeline]');
+  timelines.forEach((timeline) => {
+    const tabs = [...timeline.querySelectorAll<HTMLButtonElement>('[data-timeline-tab]')];
+    const panels = [...timeline.querySelectorAll<HTMLElement>('[data-timeline-panel]')];
+
+    const select = (tab: HTMLButtonElement) => {
+      const id = tab.dataset.timelineTab;
+      tabs.forEach((item) => {
+        const active = item === tab;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-selected', String(active));
+        item.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach((panel) => { panel.hidden = panel.dataset.timelinePanel !== id; });
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const nextIndex = event.key === 'Home' ? 0
+          : event.key === 'End' ? tabs.length - 1
+          : ['ArrowDown', 'ArrowRight'].includes(event.key) ? (index + 1) % tabs.length
+          : (index - 1 + tabs.length) % tabs.length;
+        tabs[nextIndex].focus();
+        select(tabs[nextIndex]);
+      });
+    });
+  });
+</script>

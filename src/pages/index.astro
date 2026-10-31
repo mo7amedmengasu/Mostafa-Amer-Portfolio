@@ -1,0 +1,237 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ClinicalTimeline from '../components/ClinicalTimeline.astro';
+import CoursesGrid from '../components/CoursesGrid.astro';
+import data from '../../mostafa_portfolio_data.json';
+
+const { profile, contact, education, clinicalExperience, communityAndLeadership, courses, skills, languages, additionalActivities } = data;
+const title = `${profile.fullName} — ${profile.professionalTitle}`;
+const description = `${profile.professionalTitle} at ${profile.university}, with supervised clinical training across medicine and surgical specialties in Cairo.`;
+const emailHref = `mailto:${contact.email}`;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.fullName,
+  jobTitle: profile.professionalTitle,
+  description,
+  email: contact.email,
+  address: { '@type': 'PostalAddress', addressLocality: 'Cairo', addressCountry: 'Egypt' },
+  affiliation: { '@type': 'EducationalOrganization', name: profile.university }
+};
+---
+
+<Layout {title} {description}>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <Header />
+
+  <main id="main-content">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="hero-kicker" data-reveal>
+            <span class="status-dot" aria-hidden="true"></span>
+            {profile.professionalTitle} · {profile.location}
+          </p>
+          <h1 id="hero-title" data-reveal>
+            <span class="hero-name">Mostafa</span>
+            <span class="hero-name hero-name--outline">Mohammed</span>
+            <span class="hero-name">Amer.</span>
+          </h1>
+          <div class="hero-intro" data-reveal>
+            <p>Learning the science.<br /><em>Listening to the human.</em></p>
+            <a class="circle-link" href="#journey" aria-label="Explore Mostafa's journey">
+              <span>Explore<br />the journey</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15m0 0 6-6m-6 6-6-6" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-portrait" data-reveal>
+          <div class="portrait-frame">
+            <img src="/mostafa-amer.jpg" width="1536" height="3072" alt="Portrait of Mostafa Mohammed Amer" fetchpriority="high" />
+            <div class="portrait-wash" aria-hidden="true"></div>
+          </div>
+          <span class="portrait-caption portrait-caption--top">Faculty of Medicine</span>
+          <span class="portrait-caption portrait-caption--bottom">Ain Shams University</span>
+          <svg class="portrait-orbit" viewBox="0 0 420 540" aria-hidden="true">
+            <path d="M54 86C132 8 311 2 379 104c65 96 22 303-70 371-89 65-247 28-277-98C6 267-19 159 54 86Z" />
+          </svg>
+        </div>
+
+        <aside class="hero-side" data-reveal>
+          <span>Currently enrolled</span>
+          <p>{profile.shortIntro}</p>
+          <a href={emailHref}>Contact Mostafa <span aria-hidden="true">↗</span></a>
+        </aside>
+      </div>
+      <div class="hero-marquee" aria-hidden="true">
+        <div>
+          <span>Clinical curiosity</span><i>✦</i><span>Human connection</span><i>✦</i><span>Continuous learning</span><i>✦</i><span>Clinical curiosity</span><i>✦</i><span>Human connection</span><i>✦</i>
+        </div>
+      </div>
+    </section>
+
+    <section class="about section section--paper" id="about">
+      <div class="section-shell">
+        <SectionHeading number="01" eyebrow="The person in the practice" title="Medicine is measured in knowledge—and felt in connection." lead="A journey shaped by clinical curiosity, thoughtful teamwork, and the responsibility to keep learning." />
+        <div class="about-grid">
+          <div class="about-statement" data-reveal>
+            <p class="dropcap">{profile.about[0]}</p>
+            <p>{profile.about[1]}</p>
+          </div>
+          <div class="about-values" data-reveal>
+            <div class="about-values__line"><span>Values in practice</span><span>05</span></div>
+            <ol>
+              {['Continuous learning', 'Patient-centered care', 'Communication', 'Teamwork', 'Attention to detail'].map((value, index) => (
+                <li><span>0{index + 1}</span><strong>{value}</strong></li>
+              ))}
+            </ol>
+          </div>
+        </div>
+        <div class="education-band" data-reveal>
+          <div>
+            <span class="education-band__label">Education</span>
+            <strong>{education[0].institution}</strong>
+            <span>{education[0].faculty}</span>
+          </div>
+          <div>
+            <span class="education-band__label">Status</span>
+            <strong>{education[0].studyLevel}</strong>
+            <span>{education[0].status}</span>
+          </div>
+          <div>
+            <span class="education-band__label">Languages</span>
+            <strong>{languages.map((item) => item.language).join(' · ')}</strong>
+            <span>{languages.map((item) => item.level).join(' · ')}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="journey section section--navy" id="journey">
+      <div class="section-shell">
+        <SectionHeading light number="02" eyebrow="Clinical experience" title="Learning at the bedside, one rotation at a time." lead="Supervised clinical training and observation at El-Demerdash Hospital, Ain Shams University Hospitals." />
+        <ClinicalTimeline experiences={clinicalExperience} />
+        <p class="scope-note" data-reveal><span>Scope note</span> All procedural and surgical experience shown here reflects supervised participation, clinical exposure, or observation as a medical student.</p>
+      </div>
+    </section>
+
+    <section class="focus section section--sage" id="focus">
+      <div class="section-shell">
+        <SectionHeading number="03" eyebrow="Clinical focus" title="A growing clinical lens." lead="Areas of medical learning developed through formal study, supervised hospital exposure, and focused course work." />
+        <div class="focus-composition">
+          <div class="focus-figure" data-reveal aria-hidden="true">
+            <svg viewBox="0 0 420 590">
+              <path class="focus-figure__body" d="M194 23c-28 9-44 42-34 69 5 13 17 22 17 38v29c0 13-18 22-41 30-31 11-56 34-66 65L31 374c-7 22 3 46 23 57l42 23 12 111h204l12-111 42-23c20-11 30-35 23-57l-39-120c-10-31-35-54-66-65-23-8-41-17-41-30v-29c0-16 12-25 17-38 10-27-6-60-34-69-10-3-22-3-32 0Z" />
+              <path class="focus-figure__lung" d="M194 186c-31 13-55 48-56 89-1 38 17 72 50 72 18 0 23-14 23-35V194c-5-8-10-11-17-8Zm32 0c31 13 55 48 56 89 1 38-17 72-50 72-18 0-23-14-23-35V194c5-8 10-11 17-8Z" />
+              <path class="focus-figure__line" d="M210 190v-57m-18 103-29 34m65-35 28 34M210 348v121m-72-67 72 67 73-67" />
+              <circle cx="210" cy="469" r="12" />
+            </svg>
+            <span>The body as system.<br />The person as whole.</span>
+          </div>
+          <div class="focus-list">
+            {profile.clinicalFocusAreas.map((area, index) => (
+              <article class="focus-item" data-reveal>
+                <span>0{index + 1}</span>
+                <h3>{area}</h3>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg>
+              </article>
+            ))}
+          </div>
+        </div>
+        <div class="skill-ticker" data-reveal>
+          <span>Clinical foundations</span>
+          <div>{skills.clinical.map((skill) => <em>{skill}</em>)}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="service section section--paper" id="service">
+      <div class="section-shell">
+        <SectionHeading number="04" eyebrow="Volunteering & leadership" title="Care extends beyond the clinic." lead="Community service and medical innovation initiatives that turned teamwork into practical contribution." />
+        <div class="service-grid">
+          {communityAndLeadership.map((item, index) => (
+            <article class="service-card" data-reveal>
+              <div class="service-card__number">0{index + 1}</div>
+              <div class="service-card__visual" aria-hidden="true">
+                {index === 0 ? (
+                  <svg viewBox="0 0 240 140"><path d="M19 96h202M45 96V61h44v35m-31-35V39h18v22m43 35V51h75v45m-56-45V31h38v20M31 115h179" /><circle cx="68" cy="115" r="8" /><circle cx="178" cy="115" r="8" /><path d="M153 59v27m-13-14h26" /></svg>
+                ) : (
+                  <svg viewBox="0 0 240 140"><path d="M120 19c-26 0-47 20-47 45 0 17 9 30 23 38v18h48v-18c14-8 23-21 23-38 0-25-21-45-47-45Zm-22 101h44m-38 10h32M120 42v42m-18-21h36" /><circle cx="120" cy="63" r="29" /></svg>
+                )}
+              </div>
+              <p class="service-card__year">{item.year}{item.location && <> · {item.location}</>}</p>
+              <h3>{item.organization}</h3>
+              <p class="service-card__role">{item.role.replace('â€“', '—')}</p>
+              <p>{item.description}</p>
+              {'roleNote' in item && item.roleNote && <small>“FR” is preserved from the source CV.</small>}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="learning section section--navy" id="learning">
+      <div class="section-shell">
+        <SectionHeading light number="05" eyebrow="Courses & learning" title="Curiosity, made continuous." lead="Focused courses supporting clinical study, examination skills, procedural understanding, leadership, and earlier technical learning." />
+        <CoursesGrid courses={courses} />
+        <p class="scope-note scope-note--courses" data-reveal><span>Learning note</span> Course attendance represents continued learning and does not imply independent procedural competence or specialist certification.</p>
+      </div>
+    </section>
+
+    <section class="beyond section section--champagne" id="beyond">
+      <div class="section-shell">
+        <SectionHeading number="06" eyebrow="Beyond medicine" title="A fuller life makes a more attentive human." lead="Performance, reading, and movement offer other ways to listen, observe, and stay present." />
+        <div class="beyond-grid">
+          <article class="beyond-card beyond-card--theatre" data-reveal>
+            <span class="beyond-card__index">Act I</span>
+            <div class="beyond-card__icon" aria-hidden="true">◐</div>
+            <h3>Theatre</h3>
+            <p>{additionalActivities.theatre.description}</p>
+            <small>{additionalActivities.theatre.mediaAppearance}</small>
+          </article>
+          <article class="beyond-card beyond-card--reading" data-reveal>
+            <span class="beyond-card__index">Chapter II</span>
+            <div class="beyond-card__icon" aria-hidden="true">⌇</div>
+            <h3>Reading</h3>
+            <p>{additionalActivities.reading}</p>
+          </article>
+          <article class="beyond-card beyond-card--fitness" data-reveal>
+            <span class="beyond-card__index">Motion III</span>
+            <div class="beyond-card__icon" aria-hidden="true">↗</div>
+            <h3>Fitness</h3>
+            <p>{additionalActivities.fitness}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact section section--navy" id="contact">
+      <div class="contact-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="section-shell contact-shell">
+        <p class="contact-kicker" data-reveal><span></span> Open to meaningful medical connections</p>
+        <h2 data-reveal>Let’s start with<br /><em>a conversation.</em></h2>
+        <a class="contact-email" href={emailHref} data-reveal>
+          <span>{contact.email}</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
+        </a>
+        <div class="contact-meta" data-reveal>
+          <div><span>Based in</span><strong>{profile.location}</strong></div>
+          <div><span>University</span><strong>{profile.university}</strong></div>
+          <div><span>Current stage</span><strong>{profile.professionalTitle}</strong></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="section-shell">
+      <span>© {new Date().getFullYear()} {profile.fullName}</span>
+      <span>Learning medicine. Staying human.</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+</Layout>

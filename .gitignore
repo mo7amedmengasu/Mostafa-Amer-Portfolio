@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Astro build and cache
+dist/
+.astro/
+
+# Vercel local project metadata
+.vercel/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Original source portrait; the optimized public copy is deployed instead
+personal_image.jpeg

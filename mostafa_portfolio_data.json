@@ -1,0 +1,380 @@
+{
+  "schemaVersion": "1.0",
+  "profile": {
+    "fullName": "Mostafa Mohammed Ebrahim Amer",
+    "professionalTitle": "Fifth-Year Medical Student",
+    "university": "Ain Shams University",
+    "faculty": "Faculty of Medicine",
+    "location": "Cairo, Egypt",
+    "shortIntro": "Fifth-year medical student at Ain Shams University with clinical training at El-Demerdash Hospital across internal medicine, chest medicine, respiratory intensive care, obstetrics and gynecology, neurology, and ENT/head and neck surgery.",
+    "about": [
+      "I am a fifth-year medical student at Ain Shams University with clinical training experience at El-Demerdash Hospital in a range of medical and surgical specialties.",
+      "My experience includes patient history taking, vital signs assessment, respiratory intensive care and chest medicine exposure, and supervised clinical participation around cesarean sections, vaginal deliveries, and ENT/head and neck surgical cases, including maxillary carcinoma cases and surgical complications.",
+      "Outside the hospital, I have volunteered with Bedaya Medical Caravan and contributed to Fekra Society's FCMC medical innovation initiative. I value continuous learning, teamwork, communication, and patient-centered care."
+    ],
+    "clinicalFocusAreas": [
+      "Internal Medicine",
+      "Respiratory Intensive Care",
+      "Chest Medicine",
+      "Obstetrics and Gynecology",
+      "Neurology",
+      "Otolaryngology (ENT)",
+      "Head and Neck Surgery"
+    ],
+    "portraitImage": null
+  },
+  "contact": {
+    "email": "mostafamohammed15946@gmail.com",
+    "phone": null,
+    "phoneNote": "Intentionally omitted from this public website data file for privacy; add only with Mostafa's approval.",
+    "linkedinUrl": null,
+    "facebookUrl": null,
+    "instagramUrl": null
+  },
+  "education": [
+    {
+      "institution": "Ain Shams University",
+      "faculty": "Faculty of Medicine",
+      "studyLevel": "Fifth-year medical student",
+      "degreeLabelInSourceCV": "MBCCH",
+      "startYear": 2021,
+      "endYear": null,
+      "status": "Currently enrolled",
+      "location": "Cairo, Egypt"
+    }
+  ],
+  "clinicalExperience": [
+    {
+      "id": "internal-medicine",
+      "position": "Clinical Trainee – Internal Medicine, Chest Medicine and RICU",
+      "organization": "El-Demerdash Hospital",
+      "affiliation": "Ain Shams University Hospitals",
+      "experienceType": "Clinical training",
+      "startDate": "2026-02",
+      "endDate": "2026-05",
+      "location": "Cairo, Egypt",
+      "highlights": [
+        "Undertook clinical training in Internal Medicine, with exposure to the Respiratory Intensive Care Unit (RICU) and Chest Department."
+      ],
+      "areas": [
+        "Internal Medicine",
+        "Chest Medicine",
+        "RICU"
+      ]
+    },
+    {
+      "id": "obgyn",
+      "position": "Clinical Trainee – Obstetrics and Gynecology",
+      "organization": "El-Demerdash Hospital",
+      "affiliation": "Ain Shams University Hospitals",
+      "experienceType": "Clinical training",
+      "startDate": "2025-03",
+      "endDate": "2025-06",
+      "location": "Cairo, Egypt",
+      "highlights": [
+        "Measured and recorded vital signs and supported ultrasound preparation and laboratory-related clinical activities.",
+        "Participated in supervised clinical activities involving cesarean sections and vaginal deliveries.",
+        "Gained exposure to complicated obstetric surgical cases and related clinical decision-making through supervised observation."
+      ],
+      "areas": [
+        "Obstetrics",
+        "Gynecology",
+        "Cesarean sections",
+        "Vaginal deliveries"
+      ]
+    },
+    {
+      "id": "neurology",
+      "position": "Clinical Trainee – Neurology",
+      "organization": "El-Demerdash Hospital",
+      "affiliation": "Ain Shams University Hospitals",
+      "experienceType": "Clinical training",
+      "startDate": "2023-01",
+      "endDate": "2023-03",
+      "location": "Cairo, Egypt",
+      "highlights": [
+        "Practiced patient history taking and vital signs measurement as part of supervised neurology clinical training."
+      ],
+      "areas": [
+        "Neurology",
+        "Patient history taking",
+        "Vital signs"
+      ]
+    },
+    {
+      "id": "ent",
+      "position": "Volunteer Clinical Trainee – ENT and Head and Neck Surgery",
+      "organization": "El-Demerdash Hospital",
+      "affiliation": "Ain Shams University Hospitals",
+      "experienceType": "Clinical volunteering",
+      "startDate": null,
+      "endDate": null,
+      "location": "Cairo, Egypt",
+      "highlights": [
+        "Participated in supervised clinical activities and observed ENT and head and neck surgical procedures.",
+        "Gained exposure to complex surgical cases involving maxillary carcinoma and to cases involving surgical complications."
+      ],
+      "areas": [
+        "Otolaryngology (ENT)",
+        "Head and Neck Surgery",
+        "Maxillary carcinoma cases"
+      ]
+    }
+  ],
+  "communityAndLeadership": [
+    {
+      "id": "bedaya",
+      "organization": "Bedaya Medical Caravan",
+      "role": "Organization Team Volunteer",
+      "year": 2023,
+      "location": "Fayoum, Egypt",
+      "description": "Helped organize a medical caravan that provided free healthcare services to patients in remote villages."
+    },
+    {
+      "id": "fekra",
+      "organization": "Fekra Society",
+      "role": "Head of FR – FCMC Project",
+      "year": 2023,
+      "location": null,
+      "description": "Contributed to an initiative focused on medical technology and healthcare-related innovation, including a competition for medical innovation ideas.",
+      "roleNote": "FR abbreviation preserved from the CV; do not expand it without confirmation."
+    }
+  ],
+  "courses": [
+    {
+      "title": "Compression Suture (B-Lynch) for Atonic Postpartum Hemorrhage",
+      "provider": "Incision Academy",
+      "year": 2026,
+      "category": "Obstetrics and Gynecology"
+    },
+    {
+      "title": "Internal Maneuvers in Management of Shoulder Dystocia",
+      "provider": "Incision Academy",
+      "year": 2026,
+      "category": "Obstetrics and Gynecology"
+    },
+    {
+      "title": "Cesarean Section",
+      "provider": "Incision Academy",
+      "year": 2026,
+      "category": "Obstetrics and Gynecology"
+    },
+    {
+      "title": "Mediolateral Episiotomy",
+      "provider": "Incision Academy",
+      "year": 2026,
+      "category": "Obstetrics and Gynecology"
+    },
+    {
+      "title": "Examination of the Ear",
+      "provider": "Incision Academy",
+      "year": 2026,
+      "category": "ENT"
+    },
+    {
+      "title": "Examination of the Nose",
+      "provider": "Incision Academy",
+      "year": 2026,
+      "category": "ENT"
+    },
+    {
+      "title": "Examination of the Throat",
+      "provider": "Incision Academy",
+      "year": 2026,
+      "category": "ENT"
+    },
+    {
+      "title": "Examination of the Neck",
+      "provider": "Incision Academy",
+      "year": 2026,
+      "category": "ENT"
+    },
+    {
+      "title": "Tracheotomy",
+      "provider": "Incision Academy",
+      "year": 2026,
+      "category": "Surgical learning"
+    },
+    {
+      "title": "Open Appendectomy",
+      "provider": "Incision Academy",
+      "year": 2025,
+      "category": "Surgical learning"
+    },
+    {
+      "title": "Embryological Rotation of the Midgut",
+      "provider": "Incision Academy",
+      "year": 2025,
+      "category": "Anatomy"
+    },
+    {
+      "title": "Examination of the Respiratory System",
+      "provider": "Incision Academy",
+      "year": 2025,
+      "category": "Clinical examinations"
+    },
+    {
+      "title": "Examination of the Cardiovascular System",
+      "provider": "Incision Academy",
+      "year": 2025,
+      "category": "Clinical examinations"
+    },
+    {
+      "title": "General Examination and Measurement of Vital Signs",
+      "provider": "Incision Academy",
+      "year": 2025,
+      "category": "Clinical examinations"
+    },
+    {
+      "title": "Subcutaneous Injection",
+      "provider": "Incision Academy",
+      "year": 2025,
+      "category": "Clinical learning"
+    },
+    {
+      "title": "Leadership in 21st Century Organizations",
+      "provider": "Coursera",
+      "year": 2024,
+      "category": "Leadership"
+    },
+    {
+      "title": "Vital Signs: Understanding What the Body Is Telling Us",
+      "provider": "Coursera",
+      "year": 2023,
+      "category": "Clinical learning"
+    },
+    {
+      "title": "Clinical Terminology",
+      "provider": "Coursera",
+      "year": 2023,
+      "category": "Clinical learning"
+    },
+    {
+      "title": "The Science of Well-Being",
+      "provider": "Coursera",
+      "year": 2023,
+      "category": "Personal learning"
+    },
+    {
+      "title": "Applied Data Science Capstone",
+      "provider": "Coursera",
+      "year": 2020,
+      "category": "Technical learning"
+    },
+    {
+      "title": "Data Analysis with Python",
+      "provider": "Coursera",
+      "year": 2020,
+      "category": "Technical learning"
+    },
+    {
+      "title": "Intro to Programming",
+      "provider": "Udacity",
+      "year": 2019,
+      "category": "Technical learning"
+    },
+    {
+      "title": "XXS Attack",
+      "provider": "Udemy",
+      "year": 2019,
+      "category": "Technical learning",
+      "note": "Preserved as written in the CV; course title may need confirmation."
+    }
+  ],
+  "skills": {
+    "clinical": [
+      "Patient history taking",
+      "Vital signs measurement",
+      "Clinical observation",
+      "Ultrasound preparation support",
+      "Supervised operating room exposure"
+    ],
+    "professional": [
+      "Communication",
+      "Teamwork",
+      "Leadership and mentorship",
+      "Public speaking",
+      "Organization",
+      "Time management",
+      "Relationship building",
+      "Critical thinking",
+      "Attention to detail"
+    ],
+    "tools": [
+      "Microsoft Word",
+      "Microsoft Excel",
+      "Microsoft PowerPoint"
+    ]
+  },
+  "languages": [
+    {
+      "language": "Arabic",
+      "level": "Native"
+    },
+    {
+      "language": "English",
+      "level": "B2"
+    }
+  ],
+  "additionalActivities": {
+    "theatre": {
+      "description": "Performed in four university theatre productions; one production placed second and another placed third in university-wide acting competitions.",
+      "mediaAppearance": "Appeared in a promotional project for a television program on Al Nahar channel."
+    },
+    "reading": "Reads scientific, historical, and psychological books as well as Arabic and English novels.",
+    "fitness": "Regular gym training, running, and walking."
+  },
+  "earlierNonMedicalExperience": [
+    {
+      "organization": "Sohba Trips",
+      "role": "Tour Guide",
+      "startDate": "2018",
+      "endDate": "2019-10",
+      "location": "Sharm El-Sheikh, Egypt",
+      "details": [
+        "Hosted guests, coordinated outings, and followed up with visitors."
+      ]
+    },
+    {
+      "organization": "Sohba Trips",
+      "role": "Data Entry",
+      "startDate": "2016",
+      "endDate": "2017",
+      "location": "Cairo, Egypt",
+      "details": [
+        "Worked with Excel formulas and trip sheets."
+      ]
+    }
+  ],
+  "earlierEducation": [
+    {
+      "institution": "Ahmed Orabi Secondary School",
+      "startYear": 2018,
+      "endYear": 2021,
+      "scorePercent": 93.17,
+      "nationalRankAsReported": 1216
+    }
+  ],
+  "portfolio": {
+    "showEarlierNonMedicalExperience": false,
+    "showEarlierEducation": false,
+    "showTechnicalAndNonMedicalCoursesByDefault": false,
+    "showAdditionalActivities": true,
+    "showCourses": true,
+    "contactCallToAction": "Get in touch",
+    "cvDownloadPath": "/mostafa-medical-cv.pdf",
+    "cvDownloadIsOptional": true
+  },
+  "contentAndVerificationNotes": [
+    "The user has confirmed that Mostafa is a fifth-year medical student, NOT a house officer. Do not describe him as a physician, consultant, resident, or medical graduate.",
+    "A 2026 end year appears in the original CV, but no confirmed graduation date is available. Do not show a graduation date or imply a completed medical degree.",
+    "His ENT volunteering dates are not supplied; do not fabricate dates.",
+    "The expanded meaning of FR in 'Head of FR' is unknown; do not expand it.",
+    "The original CV lists social media names but no profile URLs; leave all social URLs empty until supplied.",
+    "Participation in surgery was during supervised clinical training; do not claim that he independently performed operations or managed complications.",
+    "Course attendance does not imply independent procedural competence, professional certification, or specialist accreditation.",
+    "Do not invent publications, awards, patient numbers, institution endorsements, medical licenses, research projects, testimonials, or academic grades.",
+    "Do not add photographs or clinical/patient images that were not provided or appropriately licensed.",
+    "Phone intentionally omitted because this JSON file is intended for a PUBLIC static website; hidden JSON properties would still be accessible to visitors."
+  ]
+}

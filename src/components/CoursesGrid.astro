@@ -1,0 +1,94 @@
+---
+interface Course {
+  title: string;
+  provider: string;
+  year: number;
+  category: string;
+  note?: string;
+}
+
+interface Props { courses: Course[] }
+const { courses } = Astro.props;
+
+const getGroup = (category: string) => {
+  if (category === 'Obstetrics and Gynecology') return 'obgyn';
+  if (category === 'ENT') return 'ent';
+  if (category === 'Clinical examinations') return 'exams';
+  if (category === 'Surgical learning' || category === 'Anatomy') return 'surgery';
+  if (category === 'Technical learning' || category === 'Personal learning') return 'other';
+  return 'clinical';
+};
+
+const filters = [
+  ['clinical-all', 'Clinical selection'],
+  ['obgyn', 'OB/GYN'],
+  ['ent', 'ENT'],
+  ['exams', 'Examinations'],
+  ['surgery', 'Surgical learning'],
+  ['all', 'All learning'],
+];
+---
+
+<div class="courses" data-courses>
+  <div class="course-filters" role="group" aria-label="Filter courses" data-reveal>
+    {filters.map(([value, label], index) => (
+      <button class:list={['course-filter', { 'is-active': index === 0 }]} type="button" data-course-filter={value} aria-pressed={index === 0 ? 'true' : 'false'}>{label}</button>
+    ))}
+  </div>
+  <p class="course-count" aria-live="polite"><span data-course-count></span> courses shown</p>
+  <div class="course-grid">
+    {courses.map((course, index) => {
+      const group = getGroup(course.category);
+      const clinical = group !== 'other';
+      return (
+        <article
+          class="course-card"
+          data-course-card
+          data-group={group}
+          data-clinical={String(clinical)}
+          hidden={!clinical}
+          style={`--card-index: ${index}`}
+        >
+          <div class="course-card__top">
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <span>{course.year}</span>
+          </div>
+          <h3>{course.title}</h3>
+          <div class="course-card__meta">
+            <span>{course.provider}</span>
+            <span>{course.category}</span>
+          </div>
+          {course.note && <p class="course-card__note">Title preserved as supplied.</p>}
+        </article>
+      );
+    })}
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-courses]').forEach((section) => {
+    const buttons = [...section.querySelectorAll<HTMLButtonElement>('[data-course-filter]')];
+    const cards = [...section.querySelectorAll<HTMLElement>('[data-course-card]')];
+    const count = section.querySelector<HTMLElement>('[data-course-count]');
+
+    const applyFilter = (filter: string) => {
+      let visible = 0;
+      cards.forEach((card) => {
+        const show = filter === 'all' || (filter === 'clinical-all' && card.dataset.clinical === 'true') || card.dataset.group === filter;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      if (count) count.textContent = String(visible);
+    };
+
+    buttons.forEach((button) => button.addEventListener('click', () => {
+      buttons.forEach((item) => {
+        const active = item === button;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-pressed', String(active));
+      });
+      applyFilter(button.dataset.courseFilter ?? 'clinical-all');
+    }));
+    applyFilter('clinical-all');
+  });
+</script>
